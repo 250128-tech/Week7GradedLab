@@ -4,7 +4,7 @@
 
 // has issues.
 
-// Easy 2.
+// Easy 3.
 
 #include <iostream>
 using namespace std;
