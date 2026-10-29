@@ -9,32 +9,28 @@
 #include <iostream>
 using namespace std;
 
-bool hasAlternatingBits(int n);
+int tribonacci(int n);
 
 int main()
 {
     int n; cin >> n;
-    cout << boolalpha << hasAlternatingBits(n);
+    cout << tribonacci(n);
+    return 0;
+
 }
 
-bool hasAlternatingBits(int n)
+int tribonacci(int n)
 {
-    int Binary = 0;
-    int Power = 1;
-    bool returnV = 1;
-    while ( n > 0 ) {
-        if ( n % 2 == 1 ){
-            Binary += Power;
-        }
-        n /= 2;
-        Power *= 10;
+    if ( n == 0 ) { return 0;} else if ( n == 1 ) { return 1; } else if ( n == 2 ) { return 1;}
+    int t0 = 0, t1 = 1, t2= 1;
+
+    int i = n - 2;
+    for ( i ; i > 0 ; i--){
+        int temp1 = t2;
+        int temp2 = t1;
+        t2 = t0 + t1 + t2;
+        t1 = temp1;
+        t0 = temp2;
     }
-    int cache = Binary % 10;
-    Binary /= 10;
-    while ( Binary > 0 ) {
-        if ( cache == ( Binary % 10) ) { return 0;}
-        cache = Binary % 10;
-        Binary /= 10;
-    }
-    return returnV;
+    return t2;
 }
